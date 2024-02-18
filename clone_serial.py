@@ -35,6 +35,7 @@ api_key = os.environ.get("ELEVEN")
 # Load the sounds
 beep_start = 'media/beep_start.mp3'
 beep_stop = 'media/beep_stop.wav'
+
 ambient_sounds = [
     'media/ambient1.mp3',
     'media/ambient2.mp3',
@@ -49,7 +50,6 @@ acknowledgement_sounds = [
 ]
 radiation = random.choice(ambient_sounds)
 acknowledgement = random.choice(acknowledgement_sounds)
-ambient = random.choice(ambient_sounds)
 
 
 
@@ -60,7 +60,8 @@ def play_background_music(filename, loops=-1):
 
 def stop_background_music():
         print('stop background music')
-        pygame.mixer.music.stop()
+        #pygame.mixer.music.stop()
+        pygame.mixer.music.fadeout(1000)
 
 
 # set up serial communication
@@ -129,7 +130,7 @@ def main():
         print(f"I heard: {utterance}")
 
         serial_msg_all(serial_connections, "thinking")
-        play_background_music(ambient)
+        play_background_music(radiation)
 
 
         # with open(f"working/{timestamp}_recording.wav", "wb") as f:
@@ -191,7 +192,7 @@ if __name__ == "__main__":
             f.write(audio.get_wav_data())
 
     serial_msg_all(serial_connections, "thinking")
-    play_background_music(ambient)
+    play_background_music(radiation)
 
     voice = clone(
         name=f"{timestamp}",
