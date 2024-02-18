@@ -1,0 +1,5 @@
+simpleaichat
+whisper_mic
+elevenlabs
+SpeechRecognition
+playsound
