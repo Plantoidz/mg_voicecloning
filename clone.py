@@ -3,7 +3,7 @@ import os
 import time
 from simpleaichat import AIChat
 from whisper_mic.whisper_mic import WhisperMic
-from elevenlabs import clone, generate, stream, play, save, set_api_key
+from elevenlabs import clone, generate, stream, play, set_api_key
 import speech_recognition as sr
 from playsound import playsound
 import random
@@ -96,11 +96,10 @@ def main():
             text=f"{response}",
             model="eleven_turbo_v2",
             voice=voice,
-            stream=True ## Turns to True if want to stream
+            stream=True
         )
 
         stream(audio_stream)
-
 
 if __name__ == "__main__":
 
@@ -113,9 +112,11 @@ if __name__ == "__main__":
         file.close()    
         os.system(f"curl -X 'DELETE' 'https://api.elevenlabs.io/v1/voices/{voice_id}'  --header 'accept: application/json'  --header 'xi-api-key: {api_key}'")
 
+
     timestamp = str(int(time.time()))
     print(timestamp)
 
+    audio = generate(text="OK, we're ready to go. Please introduce yourself in a few sentences.")
     playsound(beep_start)
 
     r = sr.Recognizer()
