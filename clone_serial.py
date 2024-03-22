@@ -40,7 +40,10 @@ ambient_sounds = [
     'media/ambient1.mp3',
     'media/ambient2.mp3',
     'media/ambient3.mp3',
-    'media/ambient4.mp3'
+    'media/ambient4.mp3',
+    'media/AMBIENT5.mp3',
+    'media/AMBIENT6.mp3',
+    'media/AMBIENT7.mp3',
 ]
 acknowledgement_sounds = [
     'media/acknowledgement1.mp3',
